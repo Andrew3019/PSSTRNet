@@ -250,7 +250,8 @@ class PSSTRNet(nn.Module):
     def forward(self, x):
 
         b, c, h, w = x.size()
-        str_out_1, mask_out_1 = self.PSSTR(x, x, torch.ones((b, 1, h, w)).cuda())
+        str_out_1, mask_out_1 = self.PSSTR(x, x, torch.ones((b, 1, h, w)))
+        # str_out_1, mask_out_1 = self.PSSTR(x, x, torch.ones((b, 1, h, w)).cuda())
 
         str_out_2, mask_out_2 = self.PSSTR(x, str_out_1, mask_out_1)
 
